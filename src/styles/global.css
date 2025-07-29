@@ -1,0 +1,122 @@
+/* Reset and box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+  --bg-color: #121212;
+  --header-bg: #000000;
+  --sidebar-bg: #000000;
+  --accent-color: #1db954;
+  --text-color: #ffffff;
+  --secondary-text: #b3b3b3;
+  --player-bg: #181818;
+  --card-bg: #181818;
+  --hover-bg: #282828;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --border-radius: 8px;
+  --transition: all 0.2s ease;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout wrappers */
+.app-container {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar main"
+    "player player";
+  grid-template-rows: 64px 1fr 90px;
+  grid-template-columns: 240px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  grid-area: main;
+  padding: 24px;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(29, 185, 84, 0.1) 0%, var(--bg-color) 100%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #535353;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #727272;
+}
+
+/* Button styles */
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  outline: none;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Link styles */
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Input styles */
+input {
+  font-family: var(--font-family);
+  outline: none;
+  transition: var(--transition);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-areas: 
+      "header"
+      "main"
+      "player";
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 1fr 90px;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+}
